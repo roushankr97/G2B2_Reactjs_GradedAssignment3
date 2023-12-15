@@ -2,7 +2,7 @@ import axios from 'axios';
 import { IMovie } from '../Models/movies';
 
 const getMovies = (activeKey: string) => {
-  return axios.get<IMovie[]>(`https://servermovies.atikinivris.repl.co/${activeKey}`)
+  return axios.get<IMovie[]>(`http://localhost:4000/${activeKey}`)
     .then(response => {
       const data = response.data
       return data;
@@ -11,7 +11,7 @@ const getMovies = (activeKey: string) => {
 
 const addMovieToFavourites = (movie: IMovie) => {
   return axios.post<IMovie>(
-    'https://servermovies.atikinivris.repl.co/favourite',
+    'http://localhost:4000/favourite',
     movie,
     {
       headers: {
@@ -22,7 +22,7 @@ const addMovieToFavourites = (movie: IMovie) => {
 }
 
 const removeMovieFromFavourites = (id: string) => {
-  axios.delete(`https://servermovies.atikinivris.repl.co/favourite/${id}`)
+  axios.delete(`http://localhost:4000/favourite/${id}`)
     .then(response => {
       const data = response.data
       return data;
